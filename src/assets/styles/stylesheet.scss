@@ -11,7 +11,7 @@
   font-family: Quicksand;
 }
 
-.home-container {
+.main-container {
   .welcome-message {
     margin-top: 58px;
     margin-left: 184px;
@@ -42,5 +42,28 @@
     position: absolute;
     top: 50%;
     width: 250px;
+  }
+
+  .tasks-list {
+    margin-top: 58px;
+    margin-left: 184px;
+
+    h3 {
+      font-size: 18px;
+      padding-bottom: 30px;
+      color: $primaryColor;
+    }
+
+    .task {
+      input[type="checkbox"] {
+        transform: scale(1.6);
+      }
+      margin: 22px 0px;
+      label {
+        margin-left: 21px;
+        font-size: 16px;
+        line-height: 20px;
+      }
+    }
   }
 }

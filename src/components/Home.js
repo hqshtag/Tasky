@@ -3,7 +3,7 @@ import Pic from "../assets/img/1.png";
 
 const Home = () => {
   return (
-    <div className="home-container">
+    <div className="main-container">
       <div className="welcome-message">
         <h1>Welcome Stranger</h1>
         <h2>Any tasks for today?</h2>
