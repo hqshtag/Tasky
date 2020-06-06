@@ -9,8 +9,8 @@ import NavButton from "../partials/NavButton";
 
 import "../../assets/styles/navbar.scss";
 
-const Navbar = () => {
-  const [activeMenu, setActiveMenu] = useState({
+const Navbar = ({ handleMenuNavigation, activeMenu, toggleModalOn }) => {
+  /*const [activeMenu, setActiveMenu] = useState({
     home: true,
     tasks: false,
     done: false,
@@ -19,9 +19,7 @@ const Navbar = () => {
   const handleMenuNavigation = (e) => {
     let key = e.target.getAttribute("data-key");
     setActiveMenu({ home: false, tasks: false, done: false, [key]: true });
-  };
-
-  const menuClassName = "menu-item";
+  };*/
 
   return (
     <nav>
@@ -53,7 +51,7 @@ const Navbar = () => {
         />
       </div>
       <div>
-        <button className="btn">
+        <button className="btn" onClick={toggleModalOn}>
           {" "}
           <AddIcon /> Create New Task
         </button>
