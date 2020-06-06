@@ -1,0 +1,145 @@
+@import "colors";
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 60px;
+
+  font-family: Quicksand;
+
+  height: 60px;
+  left: 0px;
+  top: 0px;
+
+  background: #ffffff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+
+  .logo {
+    display: flex;
+    margin-left: 60px;
+    color: $primaryColor;
+    h3 {
+      //margin-bottom: 5px;
+      font-family: Quicksand;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 22px;
+      line-height: 27px;
+    }
+  }
+
+  .navmenu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .menu-btn {
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 120px;
+    height: 40px;
+
+    background: #fff;
+    color: $deadGrey;
+
+    border: none;
+    border-radius: 8px;
+
+    margin: 6px;
+
+    font-weight: 500;
+    font-size: 16px;
+    svg {
+      margin-right: 11px;
+    }
+    &.active {
+      color: $primaryColor;
+      background: $secondaryColor;
+      &:hover {
+        color: lighten($primaryColor, 2);
+        background: lighten($secondaryColor, 3);
+      }
+    }
+    &:hover {
+      background: darken(#fff, 2);
+    }
+  }
+  /* 
+  .menu-item {
+    font-size: 16px;
+    width: 120px;
+    height: 40px;
+    left: 389px;
+    top: 10px;
+
+    padding: 2px;
+    margin: 6px;
+
+    border-radius: 8px;
+    // background: blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    a {
+      color: $deadGrey;
+    }
+    .menu-link {
+      margin: 11px;
+      text-decoration: none;
+      font-family: Quicksand;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 20px;
+    }
+    &.active {
+      //background: red;
+
+      background: $secondaryColor;
+
+      a {
+        color: $primaryColor;
+      }
+    }
+  } */
+
+  .btn {
+    svg {
+      margin-right: 16px;
+    }
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Quicksand;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    background: $primaryColor;
+    color: #fff;
+    border: none;
+
+    padding: 10px;
+    width: 206px;
+    height: 40px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 13px;
+    margin-right: 60px;
+  }
+}
+
+button {
+  &:focus {
+    outline: none;
+    border: none;
+  }
+}
