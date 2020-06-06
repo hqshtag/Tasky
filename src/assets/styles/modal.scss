@@ -44,6 +44,9 @@
       border: 1px solid #ecebed;
       box-sizing: border-box;
       border-radius: 8px;
+      &::placeholder {
+        color: #e7e7ed;
+      }
       &:focus {
         outline: none;
         border: 1px solid #adadad;
