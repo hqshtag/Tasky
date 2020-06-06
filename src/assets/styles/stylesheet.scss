@@ -1,5 +1,5 @@
 @import "colors";
-
+@import "checkbox";
 @font-face {
   font-family: "Quicksand";
   src: url("../fonts/Quicksand-Regular.ttf");
@@ -42,6 +42,7 @@
     position: absolute;
     top: 50%;
     width: 250px;
+    z-index: 3;
   }
 
   .tasks-list {
@@ -55,9 +56,6 @@
     }
 
     .task {
-      input[type="checkbox"] {
-        transform: scale(1.6);
-      }
       margin: 22px 0px;
       label {
         margin-left: 21px;

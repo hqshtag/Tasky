@@ -1,14 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Task from "./partials/Task";
+import { getTasks } from "../apiServices";
 
 const Done = () => {
-  let completedTasks = [];
+  const [loading, setLoading] = useState(false);
+  const [parsedTasks, setParsedTasks] = useState([]);
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    setLoading(true);
+    getTasks(true).then((res) => {
+      setTasks(res);
+      setLoading(false);
+    });
+  }, []);
+
+  useEffect(() => {
+    setParsedTasks(
+      tasks
+        .map((task) => {
+          //console.log(task);
+          return <Task key={task._id} label={task.label} checked={true} />;
+        })
+        .reverse()
+    );
+    // console.log(parsedTasks);
+  }, [tasks]);
 
   let theh1 =
-    completedTasks.length > 0
-      ? "Yey !! we're rockin'"
-      : "Nothing done yet huh!";
+    parsedTasks.length > 0 ? "Yey !! we're rockin'" : "Nothing done yet huh!";
   let theh2 =
-    completedTasks.length > 0
+    parsedTasks.length > 0
       ? "We did one hell of a job right there !! Bravo six, going dark"
       : "What are you waiting for? come on let's GOOOOOOOO!";
 
@@ -19,8 +41,8 @@ const Done = () => {
         <h2>{theh2}</h2>
       </div>
       <div className="tasks-list">
-        <h3>{completedTasks.length} tasks are crushed!</h3>
-        {completedTasks}
+        <h3>{parsedTasks.length} tasks are crushed!</h3>
+        {parsedTasks}
       </div>
     </div>
   );

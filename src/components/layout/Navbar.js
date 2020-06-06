@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import LogoIcon from "../icons/LogoIcon";
 import DriveIcon from "../icons/DriveIcon";
 import DoneIcon from "../icons/DoneIcon";
