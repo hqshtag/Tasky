@@ -3,7 +3,7 @@ import AddIcon from "../icons/AddIcon";
 
 import { postTask } from "../../apiServices";
 
-const NewTaskForm = () => {
+const NewTaskForm = ({ handleClose }) => {
   const [label, setLabel] = useState("");
 
   const handleChange = (e) => {
@@ -14,6 +14,7 @@ const NewTaskForm = () => {
   const handleSubmit = (e) => {
     postTask(label);
     setLabel("");
+    handleClose();
   };
 
   return (

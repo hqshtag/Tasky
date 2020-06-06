@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Navbar from "./components/layout/Navbar";
 import Home from "./components/Home";
@@ -9,7 +9,7 @@ import Modal from "./components/layout/Modal";
 import NewTaskForm from "./components/partials/NewTaskForm";
 
 import "./assets/styles/stylesheet.scss";
-import { getTasks, patchTask, postTask } from "./apiServices";
+
 function App() {
   const [activeMenu, setActiveMenu] = useState({
     home: true,
@@ -19,11 +19,15 @@ function App() {
 
   const [showModal, setShowModal] = useState(false);
 
+  useEffect(() => {
+    setActiveMenu((c) => {
+      return { home: true, tasks: false, done: false };
+    });
+  }, [showModal]);
+
   const toggleModalOn = () => {
     setShowModal(true);
   };
-
-  //patchTask("5edbc6561c119c0017bf0ad8");
 
   const toggleModalOff = () => {
     setShowModal(false);
@@ -42,7 +46,7 @@ function App() {
         toggleModalOn={toggleModalOn}
       />
       <Modal handleClose={toggleModalOff} show={showModal}>
-        <NewTaskForm />
+        <NewTaskForm handleClose={toggleModalOff} />
       </Modal>
       {activeMenu.home ? (
         <Home showImg={!showModal} />

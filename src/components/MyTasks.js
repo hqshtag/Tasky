@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Task from "./partials/Task";
-import { getTasks } from "../apiServices";
+import { getTasks, patchTask } from "../apiServices";
 
 const MyTasks = () => {
   const [tasks, setTasks] = useState([]);
@@ -14,12 +14,25 @@ const MyTasks = () => {
       setLoading(false);
     });
   }, []);
-
+  const handlePatch = (id) => {
+    patchTask(id);
+    setTasks((c) => c.filter((task) => task._id !== id));
+    //e.target.parentElement.remove();
+    //this.forceUpdate();
+    //e.parentElement.remove();
+  };
   useEffect(() => {
     setParsedTasks(
       tasks.map((task) => {
         //console.log(task);
-        return <Task key={task._id} id={task._id} label={task.label} />;
+        return (
+          <Task
+            key={task._id}
+            id={task._id}
+            label={task.label}
+            patch={() => handlePatch(task._id)}
+          />
+        );
       })
     );
     // console.log(parsedTasks);

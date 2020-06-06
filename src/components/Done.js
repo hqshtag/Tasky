@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Task from "./partials/Task";
-import { getTasks } from "../apiServices";
+import { getTasks, patchTask } from "../apiServices";
 
 const Done = () => {
   const [loading, setLoading] = useState(false);
@@ -15,12 +15,27 @@ const Done = () => {
     });
   }, []);
 
+  const handlePatch = (id) => {
+    patchTask(id);
+    setTasks((c) => c.filter((task) => task._id !== id));
+    //e.target.parentElement.remove();
+    //this.forceUpdate();
+    //e.parentElement.remove();
+  };
+
   useEffect(() => {
     setParsedTasks(
       tasks
         .map((task) => {
           //console.log(task);
-          return <Task key={task._id} label={task.label} checked={true} />;
+          return (
+            <Task
+              key={task._id}
+              label={task.label}
+              checked={true}
+              patch={() => handlePatch(task._id)}
+            />
+          );
         })
         .reverse()
     );
@@ -37,8 +52,8 @@ const Done = () => {
   return (
     <div className="main-container">
       <div className="welcome-message">
-        <h1>{theh1}</h1>
-        <h2>{theh2}</h2>
+        <h1>{loading ? "Loading" : theh1}</h1>
+        <h2>{loading ? null : theh2}</h2>
       </div>
       <div className="tasks-list">
         <h3>{parsedTasks.length} tasks are crushed!</h3>
