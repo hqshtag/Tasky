@@ -31,7 +31,7 @@ const Done = () => {
           return (
             <Task
               key={task._id}
-              label={task.label}
+              label={task.text}
               checked={true}
               patch={() => handlePatch(task._id)}
             />

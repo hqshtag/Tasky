@@ -1,28 +1,33 @@
 import axios from "axios";
 
-const email = "wajih.tagourty@gmail.com";
-const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
-const baseURL = "https://autofy-tasky.herokuapp.com/api";
+//const email = "wajih.tagourty@gmail.com";
+const protocol = "http://";
+const baseURL = "localhost:5000/api";
 // GET: /tasks ?checked=""&candidate_email=""  POST: /task   PATCH: /check_task/:ids
 
 export const getTasks = async (checked) => {
-  let URI = `${corsAnywhere}${baseURL}/tasks?checked=${checked}&candidate_email=${email}`;
+  let URI = `${protocol}${baseURL}/list`;
   let res = await axios.get(URI);
-  return res.data.tasks;
+  return res.data.payload;
 };
 
 export const patchTask = async (id) => {
-  let URI = `${corsAnywhere}${baseURL}/check_task/${id}`;
-  let res = await axios.patch(URI);
+  let URI = `${protocol}${baseURL}/done/${id}`;
+  let res = await axios.put(URI);
   return res;
 };
 
-export const postTask = async (label) => {
-  let URI = `${corsAnywhere}${baseURL}/task`;
+export const postTask = async (text) => {
+  let URI = `${protocol}${baseURL}/create`;
   let body = {
-    candidate_email: email,
-    label,
+    text,
   };
   let res = await axios.post(URI, body);
+  return res;
+};
+
+export const deleteTask = async (id) => {
+  let URI = `${protocol}${baseURL}/delete/${id}`;
+  let res = await axios.delete(URI);
   return res;
 };
